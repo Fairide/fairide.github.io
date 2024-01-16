@@ -22,7 +22,7 @@ enable_smart_app_banner                   : true                                
 # Information About Yourself
 your_name                                 : The HyperLabs                                
 your_link                                 : https://thehyperlabs.com                     
-your_city                                 : Poland                                
+your_city                                 : Poland 🇵🇱                               
 email_address                             : info@thehyperlabs.com
 facebook_username                         :                                           
 instagram_username                        : 
@@ -30,8 +30,9 @@ twitter_username                          :
 github_username                           : 
 youtube_username                          :
 mastodon_link                             : 
-funder_name                               : Don't Trust Verify Foundation
+funder_name                               : Don't Trust Verify Foundation 
 funder_link                               : https://donttrustverify.org
+funder_city                               : Australia 🇦🇺                               
 
 
 # Feature List                            Edit, add or remove features to be presented.
