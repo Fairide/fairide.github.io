@@ -38,31 +38,31 @@ features                                  :
 
   - title: Pay by Bitcoin with Lightning Network
     description: Embrace the future with secure, transparent, and efficient payment processing using Bitcoin, ensuring a seamless and innovative financial experience in every ride.
-    fontawesome_icon_name: bitcoin
+    fontawesome_icon_name: fab fa-bitcoin
 
   - title: Decentralized Operation
     description: Fairide's decentralized framework guarantees a more equitable and open marketplace, fostering trust and empowerment among its users.
-    fontawesome_icon_name: globe
+    fontawesome_icon_name: fas fa-globe
 
   - title: Peer-to-Peer Connectivity
     description: Experience a personalized travel journey with Fairide's peer-to-peer connection feature, which lets riders directly connect with drivers, bypassing centralized systems for a more tailored and human-centric ridesharing experience.
-    fontawesome_icon_name: users
+    fontawesome_icon_name: fas fa-users
 
   - title: User-Driven Pricing
     description: Engage in direct price negotiations, fostering a competitive and fair pricing environment that adapts to real-time market demands.
-    fontawesome_icon_name: hand-holding-usd
+    fontawesome_icon_name: fas fa-hand-holding-usd
 
   - title: Instant Booking
     description: Experience the convenience of instant booking, with real-time availability and quick response times ensuring your plans stay on track.
-    fontawesome_icon_name: bolt
+    fontawesome_icon_name: fas fa-bolt
 
   - title: 24/7 Support
     description: Security is a top priority at Fairide. Security Centers perform thorough KYC and driver screening, ensuring only trusted individuals are behind the wheel. They also handle final payment settlements post-dispute resolutions, maintaining the integrity and trust of the Fairide ecosystem.
-    fontawesome_icon_name: shield-alt
+    fontawesome_icon_name: fas fa-shield-alt
 
   - title: Community Ratings
     description: Security Centers also oversee the Community Ratings, ensuring fairness and accuracy. This system upholds the highest standards of service and reliability, reflecting genuine user experiences and driver performance.
-    fontawesome_icon_name: thumbs-up
+    fontawesome_icon_name: fas fa-thumbs-up
     
 # Theme Settings
 topbar_color                              : "#ffffff"
