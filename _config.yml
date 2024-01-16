@@ -35,13 +35,16 @@ mastodon_link                             :
 
 # Feature List                            Edit, add or remove features to be presented.
 features                                  :
-
-  - title: Pay by Bitcoin with Lightning Network
-    description: Fairide rewards its users with bitcoins, even just for routing messages! Embrace the future with secure, transparent, and efficient payment processing using Bitcoin.
+  - title: Built on <a href="https://gig-gossip.org/">Gig-Gossip</a>
+    description: Fairide is built on the <a href="https://gig-gossip.org/">Gig-Gossip</a> protocol, a decentralized P2P gig economy platform on top of Bitcoin and NOSTR. Gig-Gossip revolutionizes the way services are offered and accessed, enabling direct connections, secure payments, and decentralized operations.
+    fontawesome_icon_name: fas fa-cogs
+    
+  - title: Pay by <a href="https://bitcoin.org">Bitcoin</a> with <a href="https://lightning.network/">Lightning Network</a>
+    description: Fairide rewards its users with bitcoins, even just for routing messages! Embrace the future with secure, transparent, and efficient payment processing using <a href="https://bitcoin.org">Bitcoin</a> .
     fontawesome_icon_name: fab fa-bitcoin
 
-  - title: Build on top of NOSTR
-    description: Fairide uses the NOSTR protocol for decentralized communication capabilities, ensuring secure and streamlined interactions within its ridesharing network.
+  - title: Build on top of <a href="https://nostr.com/">NOSTR</a>
+    description: Fairide uses the <a href="https://nostr.com/">NOSTR</a> protocol for decentralized communication capabilities, ensuring secure and streamlined interactions within its ridesharing network.
     fontawesome_icon_name: fas fa-network-wired
 
   - title: Decentralized Operation
