@@ -37,8 +37,12 @@ mastodon_link                             :
 features                                  :
 
   - title: Pay by Bitcoin with Lightning Network
-    description: Embrace the future with secure, transparent, and efficient payment processing using Bitcoin, ensuring a seamless and innovative financial experience in every ride.
+    description: Fairide rewards its users with bitcoins, even just for routing messages! Embrace the future with secure, transparent, and efficient payment processing using Bitcoin.
     fontawesome_icon_name: fab fa-bitcoin
+
+  - title: Build on top of NOSTR
+    description: Fairide uses the NOSTR protocol for decentralized communication capabilities, ensuring secure and streamlined interactions within its ridesharing network.
+    fontawesome_icon_name: fas fa-network-wired
 
   - title: Decentralized Operation
     description: Fairide's decentralized framework guarantees a more equitable and open marketplace, fostering trust and empowerment among its users.
@@ -63,7 +67,8 @@ features                                  :
   - title: Community Ratings
     description: Security Centers also oversee the Community Ratings, ensuring fairness and accuracy. This system upholds the highest standards of service and reliability, reflecting genuine user experiences and driver performance.
     fontawesome_icon_name: fas fa-thumbs-up
-    
+
+
 # Theme Settings
 topbar_color                              : "#ffffff"
 topbar_transparency                       : 0.9
