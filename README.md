@@ -77,7 +77,7 @@ The videos and screenshots must have one of the following resolutions:
 - 828x1792
 - 1125x2436
 - 1242x2688
-- 888x1920
+
 
 
 ### Step 4: Edit (or remove) Privacy Policy and Changelog
