@@ -4,12 +4,12 @@ title: Privacy Policy
 include_in_header: false
 ---
 
-# Privacy Policy for Fairide
+# Privacy Policy for GoHyper
 
 _Last Updated: 16 Jan 2024
 
 ## Overview
-Fairide, a decentralized ridesharing platform leveraging Bitcoin, is dedicated to ensuring user privacy within a blockchain framework.
+GoHyper, a decentralized ridesharing platform leveraging Bitcoin, is dedicated to ensuring user privacy within a blockchain framework.
 
 ## Data Collection and Usage
 - **Blockchain Data:** Transactional data are stored on the Bitcoin blockchain, which is public and immutable.

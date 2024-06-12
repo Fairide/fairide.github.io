@@ -1,5 +1,5 @@
 #page title
-page_title                                : Fairide                                   # Automatically populates with app name if not set and if iOS app ID is set. Otherwise enter manually.
+page_title                                : GoHyper                                   # Automatically populates with app name if not set and if iOS app ID is set. Otherwise enter manually.
 
 # App Info
 #ios_app_id                                : 1234793120                                # Required. Enter iOS app ID to automatically populate name, price and icons (e.g. 718043190).
@@ -10,7 +10,7 @@ playstore_link                            :                                     
                                                                                     # Or upload your press kit file to assets and set path accordingly (e.g. "assets/your_press_kit.zip").
 
 app_icon                                  : ./assets/appicon.png                      # Automatically populates if not set and if iOS app ID is set.  Otherwise enter path to icon file manually.
-app_name                                  : Fairide                                          # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
+app_name                                  : GoHyper                                          # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
 app_price                                 : Free                                          # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
 app_description                           : Decentralized Ridesharing, Empowered by Bitcoin and Driven by You
 
@@ -37,23 +37,23 @@ funder_city                               : Australia 🇦🇺
 # Feature List                            Edit, add or remove features to be presented.
 features                                  :
   - title: Built on <a href="https://gig-gossip.org/">Gig-Gossip</a>
-    description: Fairide is built on the <a href="https://gig-gossip.org/">Gig-Gossip</a> protocol, a decentralized P2P gig economy platform on top of <a href="https://bitcoin.org">Bitcoin</a> and <a href="https://nostr.com/">NOSTR</a>. <a href="https://gig-gossip.org/">Gig-Gossip</a> revolutionizes the way services are offered and accessed, enabling direct connections, secure payments, and decentralized operations.
+    description: GoHyper is built on the <a href="https://gig-gossip.org/">Gig-Gossip</a> protocol, a decentralized P2P gig economy platform on top of <a href="https://bitcoin.org">Bitcoin</a> and <a href="https://nostr.com/">NOSTR</a>. <a href="https://gig-gossip.org/">Gig-Gossip</a> revolutionizes the way services are offered and accessed, enabling direct connections, secure payments, and decentralized operations.
     fontawesome_icon_name: fas fa-cogs
     
   - title: Pay by <a href="https://bitcoin.org">Bitcoin</a> with <a href="https://lightning.network/">Lightning Network</a>
-    description: Fairide rewards its users with bitcoins, even just for routing messages! Embrace the future with secure, transparent, and efficient payment processing using <a href="https://bitcoin.org">Bitcoin</a> .
+    description: GoHyper rewards its users with bitcoins, even just for routing messages! Embrace the future with secure, transparent, and efficient payment processing using <a href="https://bitcoin.org">Bitcoin</a> .
     fontawesome_icon_name: fab fa-bitcoin
 
   - title: Build on top of <a href="https://nostr.com/">NOSTR</a>
-    description: Fairide uses the <a href="https://nostr.com/">NOSTR</a> protocol for decentralized communication capabilities, ensuring secure and streamlined interactions within its ridesharing network.
+    description: GoHyper uses the <a href="https://nostr.com/">NOSTR</a> protocol for decentralized communication capabilities, ensuring secure and streamlined interactions within its ridesharing network.
     fontawesome_icon_name: fas fa-network-wired
 
   - title: Decentralized Operation
-    description: Fairide's decentralized framework guarantees a more equitable and open marketplace, fostering trust and empowerment among its users.
+    description: GoHyper's decentralized framework guarantees a more equitable and open marketplace, fostering trust and empowerment among its users.
     fontawesome_icon_name: fas fa-globe
 
   - title: Peer-to-Peer Connectivity
-    description: Experience a personalized travel journey with Fairide's peer-to-peer connection feature, which lets riders directly connect with drivers, bypassing centralized systems for a more tailored and human-centric ridesharing experience.
+    description: Experience a personalized travel journey with GoHyper's peer-to-peer connection feature, which lets riders directly connect with drivers, bypassing centralized systems for a more tailored and human-centric ridesharing experience.
     fontawesome_icon_name: fas fa-users
 
   - title: User-Driven Pricing
@@ -65,7 +65,7 @@ features                                  :
     fontawesome_icon_name: fas fa-bolt
 
   - title: 24/7 Support
-    description: Security is a top priority at Fairide. Security Centers perform thorough KYC and driver screening, ensuring only trusted individuals are behind the wheel. They also handle final payment settlements post-dispute resolutions, maintaining the integrity and trust of the Fairide ecosystem.
+    description: Security is a top priority at GoHyper. Security Centers perform thorough KYC and driver screening, ensuring only trusted individuals are behind the wheel. They also handle final payment settlements post-dispute resolutions, maintaining the integrity and trust of the GoHyper ecosystem.
     fontawesome_icon_name: fas fa-shield-alt
 
   - title: Community Ratings
