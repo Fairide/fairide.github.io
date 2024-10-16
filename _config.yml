@@ -8,6 +8,7 @@ ios_app_country                           : au                                  
 appstore_link                             :                                           # Automatically populates if not set and if iOS app ID is set. Otherwise enter manually.
 playstore_link                            :                                           # Enter Google Play Store URL.
                                                                                     # Or upload your press kit file to assets and set path accordingly (e.g. "assets/your_press_kit.zip").
+qr_code                                   : ./assets/qr_tf_hl.png                                                                                    
 
 app_icon                                  : ./assets/appicon.png                      # Automatically populates if not set and if iOS app ID is set.  Otherwise enter path to icon file manually.
 app_name                                  : GoHyper                                          # Automatically populates if not set and if iOS app ID is set.  Otherwise enter manually.
@@ -74,9 +75,9 @@ features                                  :
 
 
 # Theme Settings
-topbar_color                              : "#ffffff"
-topbar_transparency                       : 0.3
-topbar_title_color                        : "#000000"
+topbar_color                              : "#000000"
+topbar_transparency                       : .5
+topbar_title_color                        : "#FFFFFF"
 
 cover_image                               : assets/headerimage.png                    # Replace with alternative image path or image URL.
 cover_overlay_color                       : "#FFFFFF"
@@ -86,7 +87,7 @@ device_color                              : white                               
 
 body_background_color                     : "#ffffff"
 
-link_color                                : "#FFFFFF"
+link_color                                : "#0077FF"
 
 app_title_color                           : "#FFFFFF"
 app_price_color                           : "#FFFFFF"

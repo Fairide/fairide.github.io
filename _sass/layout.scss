@@ -16,7 +16,6 @@
 }
 
 .qrCode {
-	margin-left: 120px;
 	width: 200px
 }
 
@@ -256,7 +255,6 @@ nav > ul li a:active {
 	padding-left: 20px;
 	height: 599px;
 	align-content: flex-start;
-	background-color: rgba(#000, 0.5);
 }
 
 @media only screen and (max-width: 992px) {
@@ -272,6 +270,7 @@ nav > ul li a:active {
 	display: flex;
 	filter: $drop-shadow;
 }
+
 
 .appIconLarge {
 	width: 120px;
@@ -291,12 +290,35 @@ nav > ul li a:active {
 
 .appName {
 	color: $app-title-color;
+	text-shadow:
+    /* Outline */
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,  
 }
+
+
+.headerName {
+	text-shadow:
+    /* Outline */
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,  
+}
+
 
 .appPrice {
 	color: $app-price-color;
 	font-weight: normal;
 	margin-top: 13px;
+	text-shadow:
+    /* Outline */
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,  
 }
 
 @media only screen and (max-width: 768px) {
@@ -332,6 +354,13 @@ nav > ul li a:active {
 
 .appDescription {
 	color: $app-description-color;
+	text-shadow:
+    /* Outline */
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000,  
+
 }
 
 @media only screen and (max-width: 992px) {
