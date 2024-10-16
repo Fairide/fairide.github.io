@@ -78,7 +78,7 @@ topbar_color                              : "#ffffff"
 topbar_transparency                       : 0.9
 topbar_title_color                        : "#000000"
 
-cover_image                               : assets/headerimage.webp                    # Replace with alternative image path or image URL.
+cover_image                               : assets/headerimage.png                    # Replace with alternative image path or image URL.
 cover_overlay_color                       : "#FFFFFF"
 cover_overlay_transparency                : 0.6
 
