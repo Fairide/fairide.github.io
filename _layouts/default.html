@@ -35,7 +35,11 @@
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <img class="appIconLarge" src="{{ site.app_icon | relative_url }}">
+                            {% if site.qr_code %}
+                                <img class="qrCode" src="{{site.qr_code}}">
+                            {%else%}
+                                <img class="appIconLarge" src="{{ site.app_icon | relative_url }}">
+                            {% endif %}
                         </div>
                         <div class="appNamePriceContainer">
                             <h1 class="appName">
@@ -56,9 +60,6 @@
                             {% endif %}
                             {% if site.appstore_link %}
                                 <a class="appStoreLink" href="{{site.appstore_link}}"><img class="appStore" src="assets/appstore.png"></a>                        </div>
-                            {% endif %}
-                            {% if site.qr_code %}
-                                <img class="qrCode" src="{{site.qr_code}}">
                             {% endif %}
                         </div>
                     </div>
