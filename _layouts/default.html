@@ -57,12 +57,10 @@
                             {% if site.appstore_link %}
                                 <a class="appStoreLink" href="{{site.appstore_link}}"><img class="appStore" src="assets/appstore.png"></a>                        </div>
                             {% endif %}
-                        </div>
-                        {% if site.qr_code %}
-                            <div class="qrCodeContainer">
+                            {% if site.qr_code %}
                                 <img class="qrCode" src="{{site.qr_code}}">
-                            </div>
-                        {% endif %}
+                            {% endif %}
+                        </div>
                     </div>
                     {% include features.html %}
                     {% include footer.html %}
