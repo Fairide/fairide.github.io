@@ -8,5 +8,5 @@ _Last Updated: 6 Nov 2024
 
 ## Assistance
 
-For assistance when using GoHyper plees feel free to contact us at [support@thehyperlabs.com](mailto:support@thehyperlabs.com)
+For assistance when using GoHyper please feel free to contact us at [support@thehyperlabs.com](mailto:support@thehyperlabs.com)
 
