@@ -15,7 +15,6 @@ Welcome to GoHyper. We are committed to protecting your privacy. This Privacy Po
 ## Information Collection
 
 - **Personal Data:** We may collect personal information such as your name, email address, and payment details.
-- **Text messaging** Text messaging opt-in data and consent is excluded from the data sharing.
 - **Usage Data:** Information about your interactions with our app, such as geolocation, usage patterns, and preferences.
 
 ## Information Use
@@ -27,6 +26,8 @@ Welcome to GoHyper. We are committed to protecting your privacy. This Privacy Po
 
 - **Third Parties:** We do not share your personal information with third parties except as necessary to provide our services or as required by law.
 - **Security:** Your data is protected using encryption and other security measures to prevent unauthorized access.
+- **Text messaging** Text messaging opt-in data and consent is excluded from the data sharing.
+
 
 ## Data Protection
 
