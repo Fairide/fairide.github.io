@@ -14,6 +14,7 @@ GoHyper, a decentralized ridesharing platform leveraging Bitcoin, is dedicated t
 ## Data Collection and Usage
 - **Blockchain Data:** Transactional data are stored on the Bitcoin blockchain, which is public and immutable.
 - **Minimal Personal Data:** Minimal personal information is collected, aligning with our decentralized ethos.
+- **Text messaging** Text messaging opt-in data and consent is excluded from the data sharing.
 
 ## Data Security
 - **Blockchain Security:** Security is upheld through the inherent features of blockchain technology.
