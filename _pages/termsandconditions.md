@@ -11,6 +11,16 @@ _Last Updated: 11 Nov 2024_
 ### Introduction
 Welcome to GoHyper! By using our app, you agree to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern GoHyper's relationship with you in relation to this app.
 
+### SMS/Text Opt-In
+By opting in to receive SMS/text messages from GoHyper, you agree to the following:
+*        GoHyper: You are subscribing to SMS updates from GoHyper.
+*        Message Frequency will be every week or monthly.
+*        Product Description: Messages may include updates, promotional offers, product information, and other relevant communications from GoHyper.
+*        Customer Care: For assistance, please contact us at support@thehyperlabs.com, or reply "HELP" to any message.
+*        Opt-Out: You may opt out at any time by replying "STOP" to any SMS. After opting out, you will no longer receive SMS messages. Re-subscribe reply back "UNSTOP."
+*        Message and Data Rates: Standard message and data rates may apply, as determined by your mobile carrier.
+*        By subscribing, you confirm that you are the authorized user of the provided mobile phone number and agree to receive SMS communications from GoHyper. 
+
 ### Usage
 - **Account Responsibility:** Users are responsible for maintaining the confidentiality of their account information and for all activities that occur under their account.
 - **Compliance:** Users must comply with all applicable laws and regulations when using GoHyper.
