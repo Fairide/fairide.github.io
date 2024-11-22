@@ -27,8 +27,9 @@ By opting in to receive SMS/text messages from GoHyper, you agree to the followi
 - **Prohibited Activities:** Users are prohibited from engaging in any activity that is illegal, harmful, or disruptive to the app's operations.
 
 ### Payments
-- **Bitcoin Transactions:** All payments are processed through Bitcoin and the Lightning Network, ensuring secure and fast transactions.
-- **Fiat Exchange:** Internal exchange services are provided for converting between Bitcoin and fiat currencies.
+- **Bitcoin Transactions:** All Bitcoin payments are processed through Bitcoin and the Lightning Network, ensuring secure and fast transactions.
+- **Fiat Transactions:** All Fiat payments are processed through Stripe Connect and are separate from Bitcoin transactions.
+- **No Crypto Exchange:** We do not provide cryptocurrency exchange services.
 
 ### Privacy
 - **Data Protection:** We are committed to protecting your privacy. All communications are encrypted using the NOSTR protocol to ensure data security.
