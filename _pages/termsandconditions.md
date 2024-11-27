@@ -6,7 +6,7 @@ include_in_header: false
 
 # Terms and Conditions for GoHyper
 
-_Last Updated: 22 Nov 2024_
+_Last Updated: 27 Nov 2024_
 
 ### Introduction
 Welcome to GoHyper! By using our app, you agree to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern GoHyper's relationship with you in relation to this app.
