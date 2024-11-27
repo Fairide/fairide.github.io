@@ -14,7 +14,7 @@ Welcome to GoHyper! By using our app, you agree to comply with and be bound by t
 ### SMS/Text Opt-In
 By opting in to receive SMS/text messages from GoHyper, you agree to the following:
 *        GoHyper: You are subscribing to SMS updates from GoHyper.
-*        Message Frequency will be every week or monthly.
+*        Message Frequency: A one-time SMS notification is sent for account verification during sign-up. Additional SMS messages may be sent on rare occasions to support resolving security issues.
 *        Product Description: Messages may include updates, promotional offers, product information, and other relevant communications from GoHyper.
 *        Customer Care: For assistance, please contact us at support@thehyperlabs.com, or reply "HELP" to any message.
 *        Opt-Out: You may opt out at any time by replying "STOP" to any SMS. After opting out, you will no longer receive SMS messages. Re-subscribe reply back "UNSTOP."
