@@ -15,7 +15,7 @@ Welcome to GoHyper! By using our app, you agree to comply with and be bound by t
 By opting in to receive SMS/text messages from GoHyper, you agree to the following:
 *        GoHyper: You are subscribing to SMS updates from GoHyper.
 *        Message Frequency: A one-time SMS is sent for account verification during sign-up and support resolving security issues will be sent on a monthly basis.
-*        Product Description: Messages may include OTP (One time passowords) and support resolving security issues from GoHyper.
+*        Product Description: Messages may include OTP (one time passoword) and support resolving security issues from GoHyper.
 *        Customer Care: For assistance, please contact us at support@thehyperlabs.com, or reply "HELP" to any message.
 *        Opt-Out: You may opt out at any time by replying "STOP" to any SMS. After opting out, you will no longer receive SMS messages. Re-subscribe reply back "UNSTOP."
 *        Message and Data Rates: Standard message and data rates may apply, as determined by your mobile carrier.
