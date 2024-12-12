@@ -6,7 +6,7 @@ include_in_header: false
 
 # Terms and Conditions for GoHyper
 
-_Last Updated: 2 Dec 2024_
+_Last Updated: 12 Dec 2024_
 
 ### Introduction
 Welcome to GoHyper! By using our app, you agree to comply with and be bound by the following terms and conditions of use, which together with our privacy policy govern GoHyper's relationship with you in relation to this app.
@@ -14,7 +14,7 @@ Welcome to GoHyper! By using our app, you agree to comply with and be bound by t
 ### SMS/Text Opt-In
 By opting in to receive SMS/text messages from GoHyper, you agree to the following:
 *        GoHyper: You are subscribing to SMS updates from GoHyper.
-*        Message Frequency: A one-time SMS is sent for account verification during sign-up and support resolving security issues will be sent on a monthly basis.
+*        Message Frequency: A one-time SMS notification is sent for account verification during sign-up. Additional SMS messages may be sent on rare occasions to support resolving security issues.
 *        Product Description: Messages may include OTP (one time passoword) and support resolving security issues from GoHyper.
 *        Customer Care: For assistance, please contact us at support@thehyperlabs.com, or reply "HELP" to any message.
 *        Opt-Out: You may opt out at any time by replying "STOP" to any SMS. After opting out, you will no longer receive SMS messages. Re-subscribe reply back "UNSTOP."
