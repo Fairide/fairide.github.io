@@ -6,13 +6,11 @@ include_in_header: true
 
 # Changelog
 
-### `Initial Release`
+### [19 Jan 2025] Initial Release
 
-## Version 1.0.16
+## Version 1.2.32
 
 #### What's New
-- It works on RegNet
+- This is the first public version of our application, featuring the initial set of functionalities and user interface design. We are excited to share this with our users and look forward to your feedback.
 
-#### Bug Fixes
-- Many bug fixes
-<br>
+

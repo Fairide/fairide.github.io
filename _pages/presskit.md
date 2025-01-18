@@ -18,15 +18,7 @@ Table of Contents
 
  - [Benefits of Using Bitcoin](#benefits of using bitcoin)
 
- - [Founders and Team](#founders and team)
-
- - [Press Contacts](#press contacts)
-
  - [Frequently Asked Questions](#frequently asked questions)
-
- - [Download Links](#download links)
-
- - [Visual Assets](#visual assets)
 
 ---
 
@@ -34,9 +26,9 @@ Table of Contents
 
 Company Name: GoHyper
 
-Founded:  **TO BE DONE**
+Founded:  2024
 
-Headquarters: **TO BE DONE**
+Headquarters: US, Australia, Poland
 
 Website: <a href="https://gohyper.app/">gohyper.app</a>
 
@@ -44,11 +36,7 @@ Website: <a href="https://gohyper.app/">gohyper.app</a>
 
 ### Social Media:
 
-Twitter:  **TO BE DONE**
-
-Facebook:  **TO BE DONE**
-
-Instagram:  **TO BE DONE**
+X/Twitter:  [https://x.com/gohyperapp](https://x.com/gohyperapp)
 
 GoHyper is a revolutionary ride-sharing app that leverages the power of Bitcoin for seamless, secure, and efficient payments. Our mission is to provide a reliable, user-friendly, and cost-effective transportation solution while promoting the adoption of cryptocurrency.
 
@@ -62,7 +50,7 @@ Platform: iOS, Android
 
 Category: Ride-Sharing, Transportation
 
-Release Date:  **TO BE DONE**
+Release Date:  19 Jan 2025
 
 GoHyper is designed to connect riders with drivers effortlessly. By integrating Bitcoin as the primary payment method, we ensure fast, transparent, and low-fee transactions for all users.
 
@@ -112,29 +100,6 @@ Privacy: Enhanced privacy for users with no need to share personal financial inf
 
 ---
 
-### Founders and Team
-
-Founder & CEO:  **TO BE DONE**
-
-CTO:  **TO BE DONE**
-
-COO:  **TO BE DONE**
-
-Team:  **TO BE DONE**
-
----
-
-Press Contacts
-
-Press Contact Name:  **TO BE DONE**
-
-Email: **TO BE DONE**
-
-Phone:  **TO BE DONE**
-
-Address:  **TO BE DONE**
-
----
 
 ### Frequently Asked Questions (FAQs)
 
@@ -152,13 +117,6 @@ Q3: How are the ride prices calculated?
 
 A3: Ride prices are calculated based on distance, time, and demand, similar to other ride-sharing apps.
 
----
-
-### Download Links
-
-iOS:  **TO BE DONE**
-
-Android:  **TO BE DONE**
 
 ---
 
@@ -168,8 +126,3 @@ Logos: <a href = "./assets/appicon.png" download>Logo Download</a>
 
 App Screenshots: <a href = "./assets/screenshot/fairfide.jpg">Screenshot Download</a>
 
-Founder Photos:  **TO BE DONE**
-
-Promotional Videos: **TO BE DONE**
-
-For additional information, interviews, or media inquiries, please contact our press team at [Email Address].
