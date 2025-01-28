@@ -1,0 +1,5 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target" : { "namespace": "android_app", "package_name": "app.gohyper",
+                 "sha256_cert_fingerprints": ["10:CA:30:AD:85:60:94:0C:20:A8:57:24:1C:79:1E:CC:20:B3:81:6F:FB:1C:FD:19:4A:2B:1C:1B:11:3E:F1:69"] }
+  }]
