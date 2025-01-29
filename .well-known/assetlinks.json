@@ -1,5 +1,15 @@
-[{
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target" : { "namespace": "android_app", "package_name": "app.gohyper",
-                 "sha256_cert_fingerprints": ["10:CA:30:AD:85:60:94:0C:20:A8:57:24:1C:79:1E:CC:20:B3:81:6F:FB:1C:FD:19:4A:2B:1C:1B:11:3E:F1:69"] }
-  }]
+[
+    {
+      "relation": [
+        "delegate_permission/common.handle_all_urls"
+      ],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.gohyper",
+        "sha256_cert_fingerprints": [
+          "10:CA:30:AD:85:60:94:0C:20:A8:57:24:1C:79:1E:CC:20:B3:81:6F:FB:1C:FD:19:4A:2B:1C:1B:11:3E:F1:69",
+          "8A:F2:CB:B4:04:1E:53:53:09:01:0D:AA:9C:DE:83:C3:40:B4:3C:D4:D4:E8:12:94:2E:74:98:36:5E:BE:51:26"
+        ]
+      }
+    }
+  ]
