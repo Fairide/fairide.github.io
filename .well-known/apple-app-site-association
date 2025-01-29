@@ -1,0 +1,14 @@
+{
+    "activitycontinuation": {
+        "apps": [ "C9569WM8P8.app.gohyper" ]
+    },
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "C9569WM8P8.app.gohyper",
+                "paths": [ "*", "/*" ]
+            }
+        ]
+    }
+}
