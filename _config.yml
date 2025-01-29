@@ -130,12 +130,13 @@ exclude:
   - README.md
   - CNAME
 
+include: ["dist"]
 include: [".well-known"]
+include: ["ride"]
 
 collections:
   pages:
     output: true
     permalink: /:path/
-
 # Markdown rendering
 markdown: kramdown
