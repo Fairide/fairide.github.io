@@ -130,9 +130,10 @@ exclude:
   - README.md
   - CNAME
 
-include: ["dist"]
-include: [".well-known"]
-include: ["ride"]
+include: 
+  - dist
+  - ride
+  - .well-known
 
 collections:
   pages:
