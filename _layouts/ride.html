@@ -8,54 +8,25 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-polylinedecorator/1.1.0/leaflet.polylineDecorator.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/protobufjs@latest/dist/protobuf.min.js"></script>
   <style>
-    #map { height: 50em;
-      width: 100em;}
+    #map {
+      height: 100vh;
+      width: 100vw;
+    }
   </style>
 </head>
 
-
-
 <body>
-    <div class="imageWrapper">
-                    <div class="appInfo">
-                        <div class="appIconShadow">
-                            <svg width="0" height="0">
-                                <defs>
-                                    <clipPath id="shape120">
-                                        <path id="shape" class="cls-1" d="M6821,495.533v-4.281c0-1.2-.04-2.4-0.04-3.642a57.7,57.7,0,0,0-.68-7.882,26.144,26.144,0,0,0-2.48-7.483,25.115,25.115,0,0,0-11.04-11.044,26.118,26.118,0,0,0-7.49-2.481,47.28,47.28,0,0,0-7.88-.68c-1.2-.04-2.4-0.04-3.64-0.04h-53.5c-1.2,0-2.4.04-3.64,0.04a57.813,57.813,0,0,0-7.88.68,26.323,26.323,0,0,0-7.49,2.481,25.115,25.115,0,0,0-11.04,11.044,26.144,26.144,0,0,0-2.48,7.483,47.313,47.313,0,0,0-.68,7.882c-0.04,1.2-.04,2.4-0.04,3.642v53.5c0,1.2.04,2.4,0.04,3.641a57.7,57.7,0,0,0,.68,7.883,26.137,26.137,0,0,0,2.48,7.482,25.115,25.115,0,0,0,11.04,11.044,26.261,26.261,0,0,0,7.49,2.481,47.28,47.28,0,0,0,7.88.68c1.2,0.04,2.4.04,3.64,0.04h53.5c1.2,0,2.4-.04,3.64-0.04a57.654,57.654,0,0,0,7.88-.68,26.057,26.057,0,0,0,7.49-2.481,25.115,25.115,0,0,0,11.04-11.044,26.137,26.137,0,0,0,2.48-7.482,47.316,47.316,0,0,0,.68-7.883c0.04-1.2.04-2.4,0.04-3.641V495.533h0Z" transform="translate(-6701 -458)" filter="url(#f1)"/>
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                            {% if site.qr_code %}
-                                <img class="qrCode" src="{{site.qr_code}}">
-                            {%else%}
-                                <img class="appIconLarge" src="{{ site.app_icon | relative_url }}">
-                            {% endif %}
-                        </div>
-                        <div class="appNamePriceContainer">
-                            <h1 class="appName">
-                                {{ site.app_name }}
-                            </h1>
-                            <h2 class="appPrice">
-                                {{ site.app_price }}
-                            </h2>
-                        </div>
-                        <div class="appDescriptionContainer">
-                            <p class ="appDescription">
-                                {{ site.app_description }}
-                            </p>
-                        </div>
-                        <div class="downloadButtonsContainer">
-                            {% if site.playstore_link %}
-                                <a class="playStoreLink" href="{{site.playstore_link}}"><img class="playStore" src="/assets/playstore.png"></a>
-                            {% endif %}
-                            {% if site.appstore_link %}
-                                <a class="appStoreLink" href="{{site.appstore_link}}"><img class="appStore" src="/assets/appstore.png"></a>                        </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                <div id="map"></div>
-            </div>
+    <div style="position: absolute; bottom: 100px; left: 10px; z-index: 1000;">
+        <div class="downloadButtonsContainer" >
+            {% if site.playstore_link %}
+                <a class="playStoreLink" href="{{site.playstore_link}}"><img class="playStore" src="/assets/playstore.png"></a>
+            {% endif %}
+            {% if site.appstore_link %}
+                <a class="appStoreLink" href="{{site.appstore_link}}"><img class="appStore" src="/assets/appstore.png"></a>                        </div>
+            {% endif %}
+        </div>
+    </div>
+    <div id="map"></div>
     <script>
 const protoSchema = `
 syntax = "proto3";
@@ -458,59 +429,62 @@ message LocationFrame
   let params = new URLSearchParams(location.search);
   let url = ("https://giggossip.blob.core.windows.net/gohyper/"+params);
   console.log(url.slice(0, -1));
-  let result;
   fetch(url.slice(0, -1))
           .then(response => response.arrayBuffer())
           .then(arrayBuffer => {
             const buffer = new Uint8Array(arrayBuffer);
             const message = Message.decode(buffer);
-            result=message.Header.RideShare;
+            return message.Header.RideShare;
+          })
+          .then(result => {
+            const geohashPunkt1 = result.FromGeohash;
+            const geohashPunkt2 = result.ToGeohash;
+            const coordPunkt1 = decodeGeohash(geohashPunkt1);
+            const coordPunkt2 = decodeGeohash(geohashPunkt2);
+            console.log(coordPunkt1);
+            console.log(coordPunkt2);
+
+            const bounds = L.latLngBounds([coordPunkt1.lat, coordPunkt1.lon], [coordPunkt2.lat, coordPunkt2.lon]);
+            const map = L.map('map').fitBounds(bounds.pad(0.1));
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: ' OpenStreetMap contributors'
+            }).addTo(map);
+
+            const markerPunkt1 = L.circle([coordPunkt1.lat, coordPunkt1.lon], {radius: 600}).addTo(map);
+            const popupPunkt1 = L.popup().setLatLng([coordPunkt1.lat, coordPunkt1.lon]).setContent("Rider: " + geohashPunkt1);
+            markerPunkt1.bindPopup(popupPunkt1).openPopup();
+
+            const markerPunkt2 = L.circle([coordPunkt2.lat, coordPunkt2.lon], {radius: 600}).addTo(map);
+            const popupPunkt2 = L.popup().setLatLng([coordPunkt2.lat, coordPunkt2.lon]).setContent("Destination: " + geohashPunkt2);
+            markerPunkt2.bindPopup(popupPunkt2);
+
+            const polyline = L.polyline([[coordPunkt1.lat, coordPunkt1.lon], [coordPunkt2.lat, coordPunkt2.lon]], {
+                color: 'red',
+                weight: 3,
+                opacity: 0.5,
+                lineCap: 'round',
+                lineJoin: 'round',
+                dashArray: [20, 10],
+                dashOffset: 20
+            }).addTo(map);
+
+            L.polylineDecorator(polyline, {
+            patterns: [
+                {offset: '0%', repeat: 75, symbol: L.Symbol.arrowHead({pixelSize: 40, pathOptions: {fillOpacity: 0.75, weight: 0}})}
+            ]
+            }).addTo(map);
           })
           .catch(error => {
             console.error('Error fetching the data:', error);
           });
-  setTimeout(() => {
-    const geohashPunkt1 = result.FromGeohash;
-    const geohashPunkt2 = result.ToGeohash;
-    const coordPunkt1 = decodeGeohash(geohashPunkt1);
-    const coordPunkt2 = decodeGeohash(geohashPunkt2);
-    console.log(coordPunkt1);
-    console.log(coordPunkt2);
 
-    const map = L.map('map').setView([(coordPunkt1.lat+coordPunkt2.lat)/2, (coordPunkt1.lon+coordPunkt2.lon)/2], 13);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: ' OpenStreetMap contributors'
-    }).addTo(map);
-
-    const markerPunkt1 = L.circle([coordPunkt1.lat, coordPunkt1.lon], {radius: 200}).addTo(map);
-    const popupPunkt1 = L.popup().setLatLng([coordPunkt1.lat, coordPunkt1.lon]).setContent("Rider: " + geohashPunkt1);
-    markerPunkt1.bindPopup(popupPunkt1).openPopup();
-
-    const markerPunkt2 = L.circle([coordPunkt2.lat, coordPunkt2.lon], {radius: 200}).addTo(map);
-    const popupPunkt2 = L.popup().setLatLng([coordPunkt2.lat, coordPunkt2.lon]).setContent("Destination: " + geohashPunkt2);
-    markerPunkt2.bindPopup(popupPunkt2);
-
-    const polyline = L.polyline([[coordPunkt1.lat, coordPunkt1.lon], [coordPunkt2.lat, coordPunkt2.lon]], {
-      color: 'red',
-      weight: 3,
-      opacity: 0.5,
-      lineCap: 'round',
-      lineJoin: 'round',
-      dashArray: [20, 10],
-      dashOffset: 20
-    }).addTo(map);
-
-    L.polylineDecorator(polyline, {
-      patterns: [
-        {offset: '0%', repeat: 75, symbol: L.Symbol.arrowHead({pixelSize: 40, pathOptions: {fillOpacity: 0.75, weight: 0}})}
-      ]
-    }).addTo(map);
-  }, 100);
-
-  function decodeGeohash(geohash) {
-    const decoded = GeoHash.decodeGeoHash(geohash);
-    return { lat: decoded.latitude[2], lon: decoded.longitude[2] };
-  }
+    function decodeGeohash(geohash) {
+        const decoded = GeoHash.decodeGeoHash(geohash);
+        const lat = (decoded.latitude[0] + decoded.latitude[1]) / 2;
+        const lon = (decoded.longitude[0] + decoded.longitude[1]) / 2;
+        const rad = Math.max(decoded.latitude[1] - decoded.latitude[0], decoded.longitude[1] - decoded.longitude[0]) / 2;
+        return { lat: lat, lon: lon, rad: rad };
+    }
 </script>
 </body>
 </html>
