@@ -12,11 +12,22 @@
       height: 100vh;
       width: 100vw;
     }
+    .rounded-box {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+        padding: 5px;
+    }
   </style>
 </head>
 
 <body>
     <div style="position: absolute; bottom: 100px; left: 10px; z-index: 1000;">
+        <div id="infoBox" class="rounded-box">
+        </div>
         <div class="downloadButtonsContainer" >
             {% if site.playstore_link %}
                 <a class="playStoreLink" href="{{site.playstore_link}}"><img class="playStore" src="/assets/playstore.png"></a>
@@ -132,7 +143,7 @@ message CertificateHeader
 /// <summary>
 /// Represents a layer in the Onion routing protocol, which contains a public key and encrypted data core.
 /// </summary>
-message OnionLayer
+message OnionLayer 
 {
     /// <summary>
     /// Gets or sets the public key associated with this layer of the onion route.
@@ -147,8 +158,8 @@ message OnionLayer
 
 
 /// <summary>
-/// An onion route is used in the onion routing protocol to establish an anonymous communication channel.
-/// Each "onion" in the route is peeled back one at a time by each gig gossip node in the network.
+/// An onion route is used in the onion routing protocol to establish an anonymous communication channel. 
+/// Each "onion" in the route is peeled back one at a time by each gig gossip node in the network. 
 /// </summary>
 message Onion
 {
@@ -255,7 +266,7 @@ message JobReplyHeader
 /// <summary>
 /// Represents the payload of a reply message.
 /// </summary>
-message JobReply
+message JobReply 
 {
     JobReplyHeader Header = 1;
     Signature Signature = 2;
@@ -267,6 +278,22 @@ message Reply
     {
         bytes Unknown = 1;
         RideShareReply RideShare = 2;
+        BlockDeliveryReply BlockDelivery = 3;
+    }
+}
+
+message JobTopic 
+{
+    string Country = 1;
+    string Geohash = 2;
+    string Currency = 3;
+    int64 SuggestedPrice = 4;
+
+    oneof Value
+    {
+        bytes Unknown = 5;
+        RideShareTopic RideShare = 6;
+        BlockDeliveryTopic BlockDelivery = 7;
     }
 }
 
@@ -282,17 +309,13 @@ message JobRequestHeader
     /// <summary>
     /// Gets or sets the topic of the payload.
     /// </summary>
-    oneof Topic
-    {
-        bytes Unknown = 4;
-        RideShareTopic RideShare = 5;
-    }
+    JobTopic Topic = 4;
 }
 
 /// <summary>
 /// Represents the payload of a request message.
 /// </summary>
-message JobRequest
+message JobRequest 
 {
     JobRequestHeader Header = 1;
     Signature Signature = 2;
@@ -300,7 +323,7 @@ message JobRequest
 
 message SettlementPromiseHeader
 {
-
+    
     /// <summary>
     /// Gets or sets the service URI of the Settler.
     /// </summary>
@@ -328,13 +351,13 @@ message SettlementPromiseHeader
 /// <summary>
 /// Represents a settlement promise.
 /// </summary>
-message SettlementPromise
+message SettlementPromise 
 {
     SettlementPromiseHeader Header = 1;
     Signature Signature = 2;
 }
 
-message SettlementTrust
+message SettlementTrust 
 {
     /// <summary>
     /// Gets or sets the settlement promise.
@@ -366,15 +389,37 @@ message Frame
     }
 }
 
-
-//// RIDESHARE
-
-
-message GeoLocation
+message GeoLocation 
 {
     double Latitude = 1;
     double Longitude = 2;
 }
+
+message GeoCircle
+{
+    GeoLocation Center = 1;
+    double Radius = 2;
+}
+
+message GeoBox
+{
+    GeoLocation TopLeft = 1;
+    GeoLocation BottomRight = 2;
+}
+
+message GeoShape
+{
+    oneof Value
+    {
+        string Geohash = 1;
+        GeoLocation Location = 2;
+        GeoCircle Circle = 3;
+        GeoBox Box = 4;
+        string EncodedPolyline = 5;
+    }
+}
+
+// RideShare
 
 message RideShareTopic
 {
@@ -383,8 +428,6 @@ message RideShareTopic
     Timestamp PickupAfter = 3;
     Timestamp PickupBefore = 4;
     double Distance = 5;
-    string Currency = 6;
-    string Country = 7;
 }
 
 message RideShareReply
@@ -396,13 +439,39 @@ message RideShareReply
     string Message = 5;
 }
 
+
+// BlockDelivery
+
+message BlockDeliveryTopic
+{
+    string SenderName = 1;
+    string BlockDescription = 2;
+    GeoLocation FromLocation = 3;
+    string FromAddress = 4;
+    GeoShape ToShape = 5;
+    Timestamp PickupAfter = 6;
+    Timestamp PickupBefore = 7;
+    Timestamp FinishBefore = 8;
+}
+
+message BlockDeliveryReply
+{
+    PublicKey PublicKey = 1;
+    repeated URI Relays = 2;
+    string Secret = 3;
+    GeoLocation Location = 4;
+    string Message = 5;
+}
+
+// Comms
+
 enum RideState
 {
     Started = 0;
-    DriverGoingForRider = 1;
-    DriverWaitingForRider = 2;
-    RiderPickedUp = 3;
-    DriverGoingWithRider = 4;
+    GoingFor = 1;
+    WaitingFor = 2;
+    PickedUp = 3;
+    GoingWith = 4;
     Completed = 5;
     Disputed = 6;
     Failed = 7;
@@ -434,45 +503,122 @@ message LocationFrame
           .then(arrayBuffer => {
             const buffer = new Uint8Array(arrayBuffer);
             const message = Message.decode(buffer);
-            return message.Header.RideShare;
+            return message.Header.Topic;
           })
-          .then(result => {
-            const geohashPunkt1 = result.FromGeohash;
-            const geohashPunkt2 = result.ToGeohash;
-            const coordPunkt1 = decodeGeohash(geohashPunkt1);
-            const coordPunkt2 = decodeGeohash(geohashPunkt2);
-            console.log(coordPunkt1);
-            console.log(coordPunkt2);
+          .then(topic => {
+            if (topic.hasOwnProperty('RideShare')) {
+                const geohashPunkt1 = topic.RideShare.FromGeohash;
+                const geohashPunkt2 = topic.RideShare.ToGeohash;
+                const coordPunkt1 = decodeGeohash(geohashPunkt1);
+                const coordPunkt2 = decodeGeohash(geohashPunkt2);
+                console.log(coordPunkt1);
+                console.log(coordPunkt2);
 
-            const bounds = L.latLngBounds([coordPunkt1.lat, coordPunkt1.lon], [coordPunkt2.lat, coordPunkt2.lon]);
-            const map = L.map('map').fitBounds(bounds.pad(0.1));
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: ' OpenStreetMap contributors'
-            }).addTo(map);
+                const bounds = L.latLngBounds([coordPunkt1.lat, coordPunkt1.lon], [coordPunkt2.lat, coordPunkt2.lon]);
+                const map = L.map('map').fitBounds(bounds.pad(0.1));
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: ' OpenStreetMap contributors'
+                }).addTo(map);
 
-            const markerPunkt1 = L.circle([coordPunkt1.lat, coordPunkt1.lon], {radius: 600}).addTo(map);
-            const popupPunkt1 = L.popup().setLatLng([coordPunkt1.lat, coordPunkt1.lon]).setContent("Rider: " + geohashPunkt1);
-            markerPunkt1.bindPopup(popupPunkt1).openPopup();
+                const markerPunkt1 = L.circle([coordPunkt1.lat, coordPunkt1.lon], {radius: coordPunkt1.rad*1000}).addTo(map);
+                const popupPunkt1 = L.popup().setLatLng([coordPunkt1.lat, coordPunkt1.lon]).setContent("Rider: " + geohashPunkt1);
+                markerPunkt1.bindPopup(popupPunkt1).openPopup();
 
-            const markerPunkt2 = L.circle([coordPunkt2.lat, coordPunkt2.lon], {radius: 600}).addTo(map);
-            const popupPunkt2 = L.popup().setLatLng([coordPunkt2.lat, coordPunkt2.lon]).setContent("Destination: " + geohashPunkt2);
-            markerPunkt2.bindPopup(popupPunkt2);
+                
+                const markerPunkt2 = L.circle([coordPunkt2.lat, coordPunkt2.lon], {radius: coordPunkt2.rad*1000}).addTo(map);
+                const popupPunkt2 = L.popup().setLatLng([coordPunkt2.lat, coordPunkt2.lon]).setContent("Destination: " + geohashPunkt2);
+                markerPunkt2.bindPopup(popupPunkt2);
 
-            const polyline = L.polyline([[coordPunkt1.lat, coordPunkt1.lon], [coordPunkt2.lat, coordPunkt2.lon]], {
-                color: 'red',
-                weight: 3,
-                opacity: 0.5,
-                lineCap: 'round',
-                lineJoin: 'round',
-                dashArray: [20, 10],
-                dashOffset: 20
-            }).addTo(map);
+                const polyline = L.polyline([[coordPunkt1.lat, coordPunkt1.lon], [coordPunkt2.lat, coordPunkt2.lon]], {
+                    color: 'red',
+                    weight: 3,
+                    opacity: 0.5,
+                    lineCap: 'round',
+                    lineJoin: 'round',
+                    dashArray: [20, 10],
+                    dashOffset: 20
+                }).addTo(map);
 
-            L.polylineDecorator(polyline, {
-            patterns: [
-                {offset: '0%', repeat: 75, symbol: L.Symbol.arrowHead({pixelSize: 40, pathOptions: {fillOpacity: 0.75, weight: 0}})}
-            ]
-            }).addTo(map);
+                L.polylineDecorator(polyline, {
+                patterns: [
+                    {offset: '0%', repeat: 75, symbol: L.Symbol.arrowHead({pixelSize: 20, pathOptions: {fillOpacity: 0.75, weight: 0}})}
+                ]
+                }).addTo(map);
+                infoBox.innerHTML 
+                            = "<table >"
+                                + "<tr>"
+                                    + "<td style='text-align: right;'><strong>Ride request</strong></td>"
+                                + "</tr>"
+                                + "<tr>"
+                                    + "<td style='text-align: right;'><strong>Suggested Price:</strong></td>"
+                                    + "<td>" + topic.SuggestedPrice + " " + (topic.Currency=="BTC"?"Satoshis (paid in Bitcoin)":topic.Currency)+"</td>"
+                                + "</tr>"
+                                + "<tr>"
+                                    + "<td style='text-align: right;'><strong>Pickup:</strong></td>"
+                                    + "<td>" + timeConverter(topic.RideShare.PickupBefore.Value) +"</td>"
+                                + "</tr>"
+                            + "</table>";
+            }
+            else if(topic.hasOwnProperty('BlockDelivery'))
+            {
+                const coordPunkt1 = {lat:topic.BlockDelivery.FromLocation.Latitude,lon:topic.BlockDelivery.FromLocation.Longitude};
+                const coordPunkt2 = {lat:topic.BlockDelivery.ToShape.Circle.Center.Latitude,lon:topic.BlockDelivery.ToShape.Circle.Center.Longitude,rad:topic.BlockDelivery.ToShape.Circle.Radius};
+                console.log(coordPunkt1);
+                console.log(coordPunkt2);
+
+                const bounds = L.latLngBounds([coordPunkt1.lat, coordPunkt1.lon], [coordPunkt2.lat, coordPunkt2.lon]);
+                const map = L.map('map').fitBounds(bounds.pad(0.1));
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: ' OpenStreetMap contributors'
+                }).addTo(map);
+
+                const markerPunkt1 = L.circle([coordPunkt1.lat, coordPunkt1.lon], {radius: 100}).addTo(map);
+                const popupPunkt1 = L.popup().setLatLng([coordPunkt1.lat, coordPunkt1.lon]).setContent("Depot:" + topic.BlockDelivery.SenderName);
+                markerPunkt1.bindPopup(popupPunkt1).openPopup();
+
+                const markerPunkt2 = L.circle([coordPunkt2.lat, coordPunkt2.lon], {radius: coordPunkt2.rad}).addTo(map);
+                const popupPunkt2 = L.popup().setLatLng([coordPunkt2.lat, coordPunkt2.lon]).setContent("Destination: " + topic.BlockDelivery.BlockDescription);
+                markerPunkt2.bindPopup(popupPunkt2);
+
+                const polyline = L.polyline([[coordPunkt1.lat, coordPunkt1.lon], [coordPunkt2.lat, coordPunkt2.lon]], {
+                    color: 'red',
+                    weight: 3,
+                    opacity: 0.5,
+                    lineCap: 'round',
+                    lineJoin: 'round',
+                    dashArray: [20, 10],
+                    dashOffset: 20
+                }).addTo(map);
+
+                L.polylineDecorator(polyline, {
+                patterns: [
+                    {offset: '0%', repeat: 75, symbol: L.Symbol.arrowHead({pixelSize: 20, pathOptions: {fillOpacity: 0.75, weight: 0}})}
+                ]
+                }).addTo(map);
+                infoBox.innerHTML 
+                            = "<table >"
+                                + "<tr>"
+                                    + "<td style='text-align: right;'><strong>Packages Delivery<br/> From:</strong></td>"
+                                    + "<td>" + topic.BlockDelivery.SenderName +"</td>"
+                                + "</tr>"
+                                + "<tr>"
+                                    + "<td style='text-align: right;'><strong>Description:</strong></td>"
+                                    + "<td>" + topic.BlockDelivery.BlockDescription +"</td>"
+                                + "</tr>"
+                                + "<tr>"
+                                    + "<td style='text-align: right;'><strong>Suggested Price:</strong></td>"
+                                    + "<td>" + topic.SuggestedPrice + " " + (topic.Currency=="BTC"?"Satoshis (paid in Bitcoin)":topic.Currency)+"</td>"
+                                + "</tr>"
+                                + "<tr>"
+                                    + "<td style='text-align: right;'><strong>Pickup:</strong></td>"
+                                    + "<td>" + timeConverter(topic.BlockDelivery.PickupBefore.Value) +"</td>"
+                                + "</tr>"
+                                + "<tr>"
+                                    + "<td style='text-align: right;'><strong>Finish:</strong></td>"
+                                    + "<td>" + timeConverter(topic.BlockDelivery.FinishBefore.Value) +"</td>"
+                                + "</tr>"
+                            + "</table>";
+            }
           })
           .catch(error => {
             console.error('Error fetching the data:', error);
@@ -480,11 +626,50 @@ message LocationFrame
 
     function decodeGeohash(geohash) {
         const decoded = GeoHash.decodeGeoHash(geohash);
-        const lat = (decoded.latitude[0] + decoded.latitude[1]) / 2;
-        const lon = (decoded.longitude[0] + decoded.longitude[1]) / 2;
+        const latCenter = (decoded.latitude[0] + decoded.latitude[1]) / 2;
+        const lonCenter = (decoded.longitude[0] + decoded.longitude[1]) / 2;
+
+        const heightKm = distanceInKm(decoded.latitude[0], lonCenter, decoded.latitude[1], lonCenter);
+        const widthKm = distanceInKm(latCenter, decoded.longitude[1], latCenter, decoded.longitude[1]);
+
         const rad = Math.max(decoded.latitude[1] - decoded.latitude[0], decoded.longitude[1] - decoded.longitude[0]) / 2;
-        return { lat: lat, lon: lon, rad: rad };
+        return { lat: latCenter, lon: lonCenter, rad: (heightKm+widthKm)/2 };
     }
+
+    function deg2rad(deg) {
+        return deg * (Math.PI / 180);
+    }
+
+    /**
+     * Returns distance in kilometers between two lat/lon points
+     * using the Haversine formula.
+     */
+    function distanceInKm(lat1, lon1, lat2, lon2) {
+        const R = 6371; // Radius of the Earth in km
+        const dLat = deg2rad(lat2 - lat1);
+        const dLon = deg2rad(lon2 - lon1);
+
+        const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+    }
+
+    function timeConverter(UNIX_timestamp){
+        var a = new Date(UNIX_timestamp * 1000);
+        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        var year = a.getFullYear();
+        var month = months[a.getMonth()];
+        var date = a.getDate();
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        var sec = a.getSeconds();
+        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
+        return time;
+    }
+    
 </script>
 </body>
 </html>
