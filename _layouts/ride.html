@@ -9,14 +9,13 @@
   <script src="https://cdn.jsdelivr.net/npm/protobufjs@latest/dist/protobuf.min.js"></script>
   <style>
     #map {
-      height: 100vh;
+      height: 70vh;
       width: 100vw;
     }
     .rounded-box {
-        padding: 15px;
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        background-color: rgba(255, 255, 255);
+        border-radius: 30px 30px 0px 0px;
     }
     th, td {
         padding: 5px;
@@ -25,17 +24,11 @@
 </head>
 
 <body>
-    <div style="position: absolute; bottom: 100px; left: 10px; z-index: 1000;">
-        <div id="infoBox" class="rounded-box">
-        </div>
-        <!--div class="downloadButtonsContainer" >
-            {% if site.playstore_link %}
-                <a class="playStoreLink" href="{{site.playstore_link}}"><img class="playStore" src="/assets/playstore.png"></a>
-            {% endif %}
-            {% if site.appstore_link %}
-                <a class="appStoreLink" href="{{site.appstore_link}}"><img class="appStore" src="/assets/appstore.png"></a>                        </div>
-            {% endif %}
-        </div-->
+    <div style="position: absolute; bottom: 0px; left: 0px; width: 100vw; height:30vh; z-index: 100000;">
+        <div id="infoBox" class="rounded-box"></div>
+        <center>
+            <button onclick="offer()" style="background-color: #0077FF; color: white; border-radius: 30px; padding: 10px 20px; border-color: #0077FF; font-size: large;"><strong>SEND OFFER</strong></button>
+        </center>
     </div>
     <div id="map"></div>
     <script>
@@ -668,6 +661,15 @@ message LocationFrame
         var sec = a.getSeconds();
         var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec ;
         return time;
+    }
+
+    function offer()
+    {
+        if (this.platform === 'android') {
+            window.location.href = '{{site.playstore_link}}';
+        } else {
+            window.location.href = '{{site.appstore_link}}';
+        }
     }
     
 </script>
