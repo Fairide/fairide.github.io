@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Pay an Existing PaymentIntent</title>
+</head>
+<body>
+    <h1>Pay Existing PaymentIntent</h1>
+
+    <!-- Payment form container -->
+    <form id="payment-form">
+        <!-- The Payment Element will be mounted here -->
+        <div id="payment-element"></div>
+        <!-- Action button -->
+        <button id="submit">Pay Now</button>
+    </form>
+
+    <!-- Status or error messages -->
+    <div id="message"></div>
+
+    <!-- Stripe.js (always load from https://js.stripe.com) -->
+    <script src="https://js.stripe.com/v3"></script>
+
+    <script>
+    // 1) Read the PaymentIntent client_secret from the URL
+    //    e.g. ?payment_intent_client_secret=pi_1234_secret_ABC
+    const urlParams = new URLSearchParams(window.location.search);
+    const clientSecret = urlParams.get("payment_intent_client_secret");
+
+    if (!clientSecret) {
+      document.getElementById('message').innerText =
+        "Missing ?payment_intent_client_secret=... in the URL!";
+      throw new Error("No client_secret provided in URL.");
+    }
+
+    // 2) Initialize Stripe with your publishable key (NOT secret key!)
+    const stripe = Stripe("pk_test_1234abcd"); // Replace with your own publishable key
+
+    // 3) Create an Elements instance and mount the Payment Element
+    const elements = stripe.elements({ clientSecret });
+    const paymentElement = elements.create("payment");
+    paymentElement.mount("#payment-element");
+
+    // 4) Handle form submission to confirm payment
+    const form = document.getElementById("payment-form");
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      // Confirm the PaymentIntent
+      const { error } = await stripe.confirmPayment({
+        elements,
+        // The client secret is used here. This "locks" confirmation to the existing PaymentIntent.
+        clientSecret,
+        confirmParams: {
+          // Where to go after a successful payment
+          return_url: "https://example.com/success.html"
+        },
+      });
+
+      if (error) {
+        // Show error to your customer
+        document.getElementById('message').innerText = error.message;
+        console.error(error);
+      }
+      // If no error, the user is being redirected to `return_url`.
+      // If "automatic payment methods" or 3D Secure is needed, Stripe handles that flow.
+    });
+    </script>
+
+</body>
+</html>
