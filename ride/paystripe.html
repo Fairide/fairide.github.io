@@ -46,24 +46,31 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      // Confirm the PaymentIntent
-      const { error } = await stripe.confirmPayment({
-        elements,
-        // The client secret is used here. This "locks" confirmation to the existing PaymentIntent.
-        clientSecret,
-        confirmParams: {
-          // Where to go after a successful payment
-          return_url: "https://example.com/success.html"
-        },
-      });
 
-      if (error) {
-        // Show error to your customer
-        document.getElementById('message').innerText = error.message;
-        console.error(error);
-      }
-      // If no error, the user is being redirected to `return_url`.
-      // If "automatic payment methods" or 3D Secure is needed, Stripe handles that flow.
+    // 1. Submit the Payment Element data to collect card details
+    const { error: submitError } = await elements.submit();
+    if (submitError) {
+      // Handle validation errors, e.g. invalid card number
+      console.error("Submit error:", submitError.message);
+      return;
+    }
+
+    // 2. If no errors from elements.submit(), confirm the payment
+    const { error } = await stripe.confirmPayment({
+      elements,
+      clientSecret,
+      confirmParams: {
+        return_url: "https://example.com/success",
+      },
+    });
+
+    if (error) {
+      // Handle confirmPayment error
+      console.error("ConfirmPayment error:", error.message);
+      return;
+    }
+
+    // If no error, the user is redirected to return_url or 3D Secure flow
     });
     </script>
 
